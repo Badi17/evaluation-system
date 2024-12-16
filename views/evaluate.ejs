@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluate</title>
+  <link rel="stylesheet" href="/css/evaluation.css">
+</head>
+<body>
+  <%- include('partials/studentSidebar') %>
+  <div class="container">
+    <!-- Flex Container for Question Form and Questionnaire Table -->
+    <div class="form-container">
+      <!-- Instructor Dropdown -->
+      <div class="instructor-dropdown">
+        <h3>Select Instructor to Evaluate</h3>
+        <select id="instructorSelect" class="form-element">
+          <option value="" disabled selected>Select an instructor</option>
+          <!-- Dynamic list of instructors will be populated here -->
+        </select>
+        <!-- Instructor Details -->
+      <div id="instructorDetails" class="instructor-details" style="display: none;">
+        <h4>Instructor Details</h4>
+        <p><strong>Name:</strong> <span id="instructorName">N/A</span></p>
+        <p><strong>Subjects:</strong> <span id="instructorSubjects">N/A</span></p>
+      </div>
+      </div>
+      <div class="evaluated-instructors-list"></div>
+
+      <!-- Evaluation Questionnaire Table -->
+      <div class="questionnaire-table">
+        <h6>Evaluation Questionnaire</h6>
+        <div class="legend">
+          <p>Rating Legend</p>
+          <p>5 = Strongly Agree, 4 = Agree, 3 = Uncertain, 2 = Disagree, 1 = Strongly Disagree</p>
+        </div>
+
+        <!-- Static Criteria and Questions (to be dynamically fetched) -->
+        <div class="criteria-section">
+          <h4>Criteria 1</h4>
+          <!-- Questions will be dynamically added here -->
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+          <h3>Feedback</h3>
+          <textarea rows="5" placeholder="Write your feedback here..."></textarea>
+        </div>
+
+        <button class="btn save-order" id="submitEvaluation">Submit Evaluation</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/evaluate.js"></script>
+  <script src="/js/studentdashboard.js"></script>
+</body>
+</html>

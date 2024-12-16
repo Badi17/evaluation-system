@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Evaluation System</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-box">
+        <!-- Left Section - Login Form -->
+        <div class="left-section">
+          <div class="form login">
+            <img src="images/gcc.png" class="first-img"/>
+            <form action="/login" method="POST">
+              <div class="input-field">
+                <input type="text" name="identifier" placeholder="Enter your user ID" required />
+                <i class="uil uil-user icon"></i>
+              </div>
+              <div class="input-field">
+                <!-- Add the password class here -->
+                <input type="password" name="password" class="password" placeholder="Enter your password" required />
+                <i class="uil uil-lock icon"></i>
+                <!-- No need for id here, class should work -->
+                <i class="uil uil-eye-slash showHidePw"></i>
+              </div>              
+              <div class="input-field button">
+                <input type="submit" value="Login" />
+              </div>
+            </form>            
+          </div>
+        </div>
+
+        <!-- Right Section - Image -->
+        <div class="right-section">
+          <img src="images/bsit.png" alt="Right Section Image" />
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

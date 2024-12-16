@@ -1,0 +1,96 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="/css/dashboard.css" />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+      <title>Dashboard</title>
+    </head>
+    <body>
+      <%- include('partials/sidebar') %>
+      <!-- MAIN -->
+      <main>
+        <div class="info-data">
+          <!-- Instructors Card -->
+          <div class="card" onclick="location.href='/instructors'" style="cursor: pointer;">
+            <div class="head">
+              <div>
+                <h2>Instructors</h2>
+              </div>
+            </div>
+            <span class="count" id="instructors-count"><%= instructorCount %></span>
+          </div>
+
+          <!-- Students Card -->
+          <div class="card" onclick="location.href='/students'" style="cursor: pointer;">
+            <div class="head">
+              <div>
+                <h2>Students</h2>
+              </div>
+            </div>
+            <span class="count" id="students-count"><%= studentCount %></span>
+          </div>
+
+          <!-- Report Card -->
+          <div class="card" onclick="location.href='/report'" style="cursor: pointer;">
+            <div class="head">
+              <div>
+                <h2>Report</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questionnaire Card -->
+          <div class="card" onclick="location.href='/questionnaire'" style="cursor: pointer;">
+            <div class="head">
+              <div>
+                <h2>Questionnaire</h2>
+              </div>
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- MAIN -->
+      <div class="chart-container">
+        <canvas id="studentsBarChart"></canvas>
+      </div>    
+      <script src="/js/dashboard.js"></script>
+
+      <!-- Chart.js Script to Render Bar Chart -->
+      <script>
+        // Data passed from your server (replace with actual dynamic data)
+        const yearLevels = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+        const studentCounts = [<%= firstYearCount %>, <%= secondYearCount %>, <%= thirdYearCount %>, <%= fourthYearCount %>];
+
+        // Create and render the bar chart
+  // Create and render the bar chart
+  const ctx = document.getElementById('studentsBarChart').getContext('2d');
+  const studentsBarChart = new Chart(ctx, {
+    type: 'bar',  // Bar chart type
+    data: {
+      labels: yearLevels,  // Year level labels
+      datasets: [{
+        label: 'Number of Students',  // Dataset label
+        data: studentCounts,  // Data for each year level
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',  // Bar color
+        borderColor: 'rgba(54, 162, 235, 1)',  // Bar border color
+        borderWidth: 1  // Bar border width
+      }]
+    },
+    options: {
+      responsive: true,  // Make the chart responsive
+      maintainAspectRatio: false,  // This will allow the height to be controlled by CSS
+      scales: {
+        y: {
+          beginAtZero: true  // Y-axis starts at 0
+        }
+      }
+    }
+  });
+    </script>
+    </body>
+  </html>

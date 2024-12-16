@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/section.css" />
+  <title>Section: <%= yearLevel %></title>
+</head>
+<body>
+  <%- include('partials/sidebar') %>
+  
+  <main>
+    <div class="tables-wrapper">
+      <div class="table-container">
+        <div class="header">
+          <h2>Section</h2>          
+          <button class="add-bundle-btn">
+            <i class='bx bx-plus'></i> Add Block
+          </button>
+        </div>
+
+        <div class="table-controls">
+          <label for="show-entries">Show
+            <select id="show-entries">
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+            entries
+          </label>
+
+          <div class="search-box">
+            <input type="text" placeholder="Search" />
+          </div>
+        </div>
+
+        <table id="section-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Students</th>
+              <th>Block</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (students && students.length > 0) { %>
+              <% students.forEach((student, index) => { %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= student.fname %></td>
+                  <td><%= student.block %></td>
+                  <td>
+                    <i class='bx bx-show'></i>
+                    <i class='bx bx-edit'></i>
+                    <i class='bx bx-trash'></i>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="4">No students found.</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <div class="table-info">
+          <div class="pagination-controls">
+            <button class="pagination-btn">Previous</button>
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="small-table">
+        <div class="header">
+          <h2>Blocks</h2>
+        </div>
+        <table id="block-table">
+          <thead>
+            <tr>
+              <th>Block</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="block-table-body">
+            <% if (sections && sections.length > 0) { %>
+              <% sections.forEach((section) => { %>
+                <tr>
+                  <td><%= section.block %></td>
+                  <td>
+                    <i class='bx bx-trash' data-id="<%= section.id %>"></i>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="2">No blocks found.</td>
+              </tr>
+            <% } %>
+          </tbody>          
+        </table>        
+      </div>
+    </div>
+  </main>
+
+  <div id="add-bundle-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Add Block</h3><br>
+      <form id="add-bundle-form" method="POST" action="/4section/add">
+        <label for="Section-block">Block:</label>
+        <input type="text" id="Section-block" name="sectionBlock" placeholder="Enter block (e.g., A)" required />
+        <input type="hidden" name="sectionYearLevel" value="<%= yearLevel %>" />
+
+        <div class="form-actions">
+          <button type="submit" class="add-btn">Add</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+        </div>
+      </form>      
+    </div>
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/section.js"></script>  
+</body>
+</html>

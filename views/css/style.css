@@ -1,0 +1,141 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.first-img {
+  width: 50px;
+  height: 50px; 
+}
+
+.container {
+  max-width: 750px; /* Increased the max width for the big rectangle */
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.content-box {
+  display: flex;
+  width: 100%;
+  height: auto; /* Dynamic height based on the content */
+}
+
+.left-section, .right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-section {
+  padding: 30px;
+}
+
+.right-section {
+  background-color: #ffffff; /* Background color for the right section */
+}
+
+.right-section img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+.form {
+  width: 100%;
+}
+
+.form .title {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input-field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+/* Change icon color on input focus */
+.input-field input:focus + i.icon,
+.input-field input:valid + i.icon {
+  color: #4CBB17; /* Change this to the desired color */
+}
+
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: all 0.2s ease;
+}
+
+.input-field i.icon {
+  left: 0;
+}
+
+.input-field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.button input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #4CBB17;
+  color: #fff;
+  text-shadow: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button input:hover {
+  background-color: #2E8B57;
+}
+
+.left-section {
+  padding: 30px;
+  border-right: 2px solid #ccc; /* Add a vertical line */
+}
+
+.right-section::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: #ccc;
+  position: absolute;
+  left: 0;
+}

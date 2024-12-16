@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="css/statistics.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+    <div class="container">
+        <!-- Questions Section -->
+        <div class="questions">
+            <table class="question-table">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% responsesWithQuestions.forEach(response => { %>
+                        <tr>
+                            <td><%= response.question %></td> <!-- Question Text -->
+                            <td><%= response.response %></td> <!-- Response Answer -->
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Status Section -->
+        <div class="status">
+            <table class="status-table">
+                <tr>
+                    <td>Remark</td>
+                    <td><%= remarks.toFixed(2) %></td>  <!-- Average Response -->
+                </tr>
+                <tr>
+                    <td>Evaluated By</td>
+                    <td><%= studentName %></td>
+                </tr>
+                <tr>
+                    <td>Instructor</td>
+                    <td><%= instructorName %></td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><%= date %></td>
+                </tr>
+            </table>
+            <!-- Chart Section -->
+            <div class="chart">
+                <canvas id="answerChart"></canvas>
+            </div>
+            <div class="feedback">
+                <h4>Feedback</h4>
+                <p><%= feedback %></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('answerChart').getContext('2d');
+        var answerChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Strongly Disagree', 'Disagree', 'Uncertain', 'Agree', 'Strongly Agree'],
+                datasets: [{
+                    label: 'Answers',
+                    data: <%- JSON.stringify(responseCounts) %>,  // Data dynamically passed from backend
+                    backgroundColor: ['#FF5B5B', '#FF9E2C', '#FFCE56', '#4BC0C0', '#36A2EB'],
+                    borderColor: ['#FF5B5B', '#FF9E2C', '#FFCE56', '#4BC0C0', '#36A2EB'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

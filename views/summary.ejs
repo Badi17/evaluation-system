@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/summary.css" />
+  <title>Evaluation Summary</title>
+</head>
+<body>
+  <%- include('partials/instructorSidebar') %>
+  <main>
+    <!-- Enhanced Summary Cards (Horizontal Layout) -->
+    <div class="summary-cards-container">
+      <% evaluationSummary.forEach((summary) => { %>
+        <div class="summary-card">
+          <h2><%= summary.subjectName %></h2>
+          <p><strong>Description:</strong> <%= summary.description %></p>
+          <p><strong>Evaluated by:</strong> <%= summary.numEvaluated %> students</p>
+          <p><strong>Average Rating:</strong> <%= summary.averageRating.toFixed(2) %></p>
+        </div>
+      <% }) %>
+    </div>
+
+    <!-- Container for the two charts side by side -->
+    <div class="charts-container">
+      <div class="chart-container">
+        <div class="chart-title">Average Rating per Subject</div>
+        <canvas id="subjectRatingChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <div class="chart-title">Number of Evaluations per Subject</div>
+        <canvas id="subjectEvaluationCountChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Student Feedback Section on the Right -->
+    <div class="student-feedback-container">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Student Says</h5>
+          <% if (feedbacks.length > 0) { %>
+            <ul class="list-group">
+              <% feedbacks.forEach((feedback) => { %>
+                <li class="list-group-item">
+                  <%= feedback %>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p>No feedback available.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const subjectNames = <%- JSON.stringify(subjectNames) %>;
+    const averageRatings = <%- JSON.stringify(averageRatings) %>;
+    const evaluationsCount = <%- JSON.stringify(evaluationsCount) %>;
+
+    // Bar Chart for Subject Ratings
+    const ctx1 = document.getElementById('subjectRatingChart').getContext('2d');
+    const subjectRatingChart = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: subjectNames,
+        datasets: [{
+          label: 'Average Rating',
+          data: averageRatings,
+          backgroundColor: '#4caf50',
+          borderColor: '#388e3c',
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            ticks: {
+              autoSkip: false,
+              maxRotation: 90,
+              minRotation: 45,
+            },
+          },
+          y: {
+            beginAtZero: true,
+          },
+        },
+        barPercentage: 0.5,
+        categoryPercentage: 0.5,
+      },
+    });
+
+    // Bar Chart for Number of Evaluations
+    const ctx2 = document.getElementById('subjectEvaluationCountChart').getContext('2d');
+    const subjectEvaluationCountChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: subjectNames,
+        datasets: [{
+          label: 'Number of Evaluations',
+          data: evaluationsCount,
+          backgroundColor: '#f44336', 
+          borderColor: '#d32f2f',
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            ticks: {
+              autoSkip: false,
+              maxRotation: 90,
+              minRotation: 45,
+            },
+          },
+          y: {
+            beginAtZero: true,
+          },
+        },
+        barPercentage: 0.5,
+        categoryPercentage: 0.5,
+      },
+    });
+  </script>
+  <script src="/js/summary.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

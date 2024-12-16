@@ -1,0 +1,50 @@
+/* General layout */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.card1, .card2 {
+  background: linear-gradient(to right, #4caf50, #388e3c); /* Green gradient for both cards */
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 350px;  /* Same width for both cards */
+  height: 120px; /* Adjusted height for both cards */
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-align: center;  /* Center the text inside cards */
+  margin-left: 11em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card2 {
+  margin-left: -0.6em;
+}
+
+.info-data {
+  display: flex;
+  gap: 1rem;       /* Adjusted gap between the cards */
+  justify-content: center;  /* Center the cards horizontally */
+}
+
+.iconn {
+  font-size: 2rem;   /* Adjust size of the icon */
+  color: white;      /* Set icon color to white */
+  margin-bottom: 10px; /* Space between the icon and the text */
+}
+
+h2 {
+  color: white; /* Ensure text is readable on the gradient background */
+  margin-top: 10px;
+  text-align: center;
+}

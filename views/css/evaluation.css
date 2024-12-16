@@ -1,0 +1,189 @@
+/* General layout */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Flex Container */
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.questionnaire-table {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80%;
+  margin-right: 7.5em;
+  margin-right: -5.4rem;
+}
+
+.instructor-dropdown {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 40%;
+  margin-left: 10rem;
+  margin-right: -2.1rem;
+}
+
+/* Heading Styles */
+h4 {
+  font-weight: 650;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+h6 {
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+h4 {
+  font-size: 1em;
+  background: linear-gradient(to right, #4CAF50, #76d275);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+/* Dropdown */
+.form-element {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.form-element:focus {
+  border-color: #4CAF50;
+}
+
+/* Buttons */
+.save-order {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #4CAF50, #3a883c);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-transform: uppercase;
+}
+
+.save-order:hover {
+  background: #3a883c;
+}
+
+/* Questionnaire Table */
+.legend p {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.criteria-section {
+  margin-bottom: 20px;
+}
+
+.question-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.rating-options {
+  display: flex;
+  gap: 10px;
+}
+
+.rating-options label {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.rating-options input[type="radio"] {
+  accent-color: #4CAF50;
+}
+
+/* Feedback Section */
+.feedback-section textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+  resize: none;
+  transition: border-color 0.3s ease;
+}
+
+.feedback-section textarea:focus {
+  border-color: #4CAF50;
+}
+
+.feedback-section {
+  margin-top: 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Instructor Details */
+.instructor-details {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.instructor-details h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.instructor-details p {
+  font-size: 1em;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.instructor-details strong {
+  color: #4CAF50; /* Accent color for the labels */
+}

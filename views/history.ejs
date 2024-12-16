@@ -1,0 +1,78 @@
+<%- include('partials/studentSidebar') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluation History</title>
+  <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+  <!-- Legend Container -->
+  <div class="legend-container">
+    <h6>Submitted Evaluations</h6>
+    <div class="legend">
+      <ul>
+        <li>5 = Strongly Agree</li>
+        <li>4 = Agree</li>
+        <li>3 = Uncertain</li>
+        <li>2 = Disagree</li>
+        <li>1 = Strongly Disagree</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Container for Evaluations -->
+  <div class="container">
+    <% if (evaluations && evaluations.length === 0) { %>
+      <p>No evaluations submitted yet.</p>
+    <% } else { %>
+      <% evaluations.forEach((evaluation) => { %>
+        <div class="evaluation-entry">
+          <h3>Instructor: <%= evaluation.funame || "No instructor name available" %></h3>
+          <h4>Subject: <%= evaluation.subjects || "No subject available" %></h4>
+  
+          <% const relatedResponses = responses.filter(response => response.evaluationId === evaluation.id); %>
+          <% if (relatedResponses.length > 0) { %>
+            <table class="criteria-table">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>Question</th>
+                  <th>Response</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% relatedResponses.forEach((response) => { %>
+                  <% const question = questions.find(q => q.id === response.questionId); %>
+                  <% if (question) { %>
+                    <tr>
+                      <td><%= question.criteria %></td>
+                      <td><%= question.question %></td>
+                      <td>
+                        <%= response.response === 5 ? "Strongly Agree" :
+                            response.response === 4 ? "Agree" :
+                            response.response === 3 ? "Uncertain" :
+                            response.response === 2 ? "Disagree" : "Strongly Disagree" %>
+                      </td>
+                    </tr>
+                  <% } %>
+                <% }); %>
+              </tbody>
+            </table>
+          <% } else { %>
+            <p>No criteria available for this evaluation.</p>
+          <% } %>
+  
+          <div class="feedback-section">
+            <h4>Feedback</h4>
+            <textarea rows="5" disabled><%= evaluation.feedback || "No feedback provided" %></textarea>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>  
+  </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/instructor.css" />
+    <title>Instructor Dashboard</title>
+  </head>
+  <body>
+    <%- include('partials/instructorSidebar') %>
+
+    <!-- MAIN -->
+    <main>
+      <div class="info-data">
+        <div
+          class="card"
+          onclick="location.href='/summary'"
+          style="cursor: pointer; background: linear-gradient(to right, #4caf50, #388e3c); border-radius: 30px; margin-top: -30px; color: white;"
+        >
+          <div class="head">
+            <div>
+              <h2>Evaluation Summary</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Card - Your Students Say -->
+      <div class="feedback-card card">
+        <div class="head">
+          <h2>Students Say</h2>
+        </div>
+        <div class="feedback-list">
+          <% feedbacks.forEach(function(feedback) { %>
+            <div class="feedback-item">
+              <p><%= feedback %></p>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+          </main>
+
+      <!-- Bar Chart Section -->
+      <div class="charts-container">
+        <div class="chart-container">
+          <canvas id="dashboardSubjectRatingChart"></canvas>
+        </div>
+      </div>
+    </main>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Subject names and corresponding data (replace with your backend data)
+      const subjectNames = <%- JSON.stringify(subjectNames) %>;
+      const averageRatings = <%- JSON.stringify(averageRatings) %>;
+      const evaluationsCount = <%- JSON.stringify(evaluationsCount) %>;
+
+      // Ensure data alignment and replace missing values with 0
+      const sanitizedAverageRatings = averageRatings.map(value => value || 0);
+      const sanitizedEvaluationsCount = evaluationsCount.map(value => value || 0);
+
+      // Log data to confirm
+      console.log('Subject Names:', subjectNames);
+      console.log('Average Ratings:', sanitizedAverageRatings);
+      console.log('Evaluations Count:', sanitizedEvaluationsCount);
+
+      // Bar Chart Configuration
+      const ctx = document.getElementById('dashboardSubjectRatingChart').getContext('2d');
+      const dashboardSubjectRatingChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: subjectNames, 
+          datasets: [
+            {
+              label: "",
+              data: sanitizedAverageRatings,
+              backgroundColor: ['#FF6384', '#36A2EB'],
+              borderColor: '#fff',
+              borderWidth: 2,
+            },
+            {
+              label: "",
+              data: sanitizedEvaluationsCount,
+              backgroundColor: ['#FF9F40', '#9966FF'],
+              borderColor: '#fff',
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem) {
+                  const datasetIndex = tooltipItem.datasetIndex;
+                  const dataLabel =
+                    datasetIndex === 0
+                      ? 'Average Rating: '
+                      : 'Evaluations Count: ';
+                  return dataLabel + tooltipItem.raw.toFixed(2);
+                },
+              },
+            },
+            legend: {
+              display: false,
+              position: 'top',
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/studentdashboard.css" />
+    <title>Student dashboard</title>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <ul class="side-menu">
+        <li class="divider" data-text="main">Main</li>
+        <li>
+          <a href="/student" class="active"
+            ><i class="bx bxs-dashboard icon"></i> Dashboard</a>
+        </li><br>
+          <hr/>
+          <a href="/evaluate"><i class="bx bxs-spreadsheet icon"></i> Evaluate</a>
+        </li>
+        <li>
+          <a href="/history"><i class="bx bxs-comment-detail icon"></i> Evaluation History</a>
+        </li>
+      </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- NAVBAR -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <form action="#">
+          <div class="form-group"></div>
+        </form>
+        <span class="divider"></span>
+        <div class="profile">
+          <img src="/images/profile icon.png" alt="" />
+          <ul class="profile-link">
+            <li>
+              <a href="/login"><i class="bx bxs-log-out-circle"></i> Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- NAVBAR -->
+    </section>
+    <!-- NAVBAR -->
+  </body>
+</html>

@@ -1,0 +1,156 @@
+/* General layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Flexbox for summary cards */
+.summary-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping if there are too many cards */
+    gap: 30px; /* Adjust the spacing between cards */
+    justify-content: flex-start; /* Distribute cards horizontally */
+    align-items: flex-start; /* Align cards at the top */
+    margin-left: 12.4em;
+    margin-top: 18px;
+    padding: 0 2em;
+}
+
+/* Single summary card */
+.summary-card {
+    background: linear-gradient(to right, #4caf50, #388e3c);
+    color: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 12px 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 250px;
+    max-width: 230px;
+    font-size: 0.9em;
+    text-align: left;
+    min-height: 140px;
+    margin-left: -3.9em;
+    margin-right: 50px;
+}
+
+.summary-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card h2 {
+    font-size: 1.4em;
+    margin-bottom: 8px;
+}
+
+.summary-card p {
+    margin: 6px 0;
+    font-size: 0.9em;
+}
+
+.summary-card i {
+    font-size: 1.3em;
+    margin-left: 8px;
+}
+
+/* Chart Section */
+.chart-section {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chart-title {
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    color: #333;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 30px;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    margin-left: em;
+}
+
+/* Table style */
+.evaluation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.evaluation-table th, .evaluation-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.evaluation-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+.evaluation-table td {
+    color: #555;
+}
+
+/* Feedback & Remarks section */
+.remarks p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.remarks strong {
+    color: #333;
+}
+
+/* Info section */
+.info p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.info strong {
+    color: #333;
+}
+
+/* Flexbox layout for side-by-side charts */
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 2em;
+    padding: 0 2em;
+    margin-left: 9em;
+    max-width: 180%;
+}
+
+/* Additional styling for card icon and chart container */
+.card-icon {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+

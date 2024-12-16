@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/subjects.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <%- include('partials/sidebar') %>
+    <main>
+      <section class="subject-list-section">
+        <div class="table-container">
+          <div class="table-header">
+            <h2>2nd Year Subject List</h2>
+            <button class="btn-add-subject" id="open-popup">
+              <i class="bx bx-plus"></i> Add Subject
+            </button>
+          </div>
+          <div class="table-controls">
+            <label for="show-entries">Show
+              <select id="show-entries">
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+              </select>
+              Entries
+            </label>
+            <div class="search-box">
+              <input type="text" placeholder="Search" />
+              <i class="bx bx-search"></i>
+            </div>
+          </div>
+          <table class="subject-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Subject Code</th>
+                <th>Subject Description</th>
+                <th>Unit</th>
+                <th>Type</th>
+                <th>Time</th>
+                <th>Day</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="subject-table-body">
+              <% if (subjects && subjects.length > 0) { %>
+                <% subjects.forEach((subject, index) => { %>
+                  <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= subject.subjectName %></td>
+                    <td><%= subject.description %></td>
+                    <td><%= subject.unit %></td>
+                    <td><%= subject.isLab %></td>
+                    <td><%= subject.time %></td>
+                    <td><%= subject.day %></td>
+                    <td>
+                      <i class="bx bx-show"></i>
+                      <i class="bx bx-edit"></i>
+                      <i class="bx bx-trash"></i>
+                    </td>
+                  </tr>
+                <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="6">No subjects found.</td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <div class="table-footer">
+            <div class="pagination">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Subject Modal -->
+      <div class="modal-bg" id="add-subject-modal">
+        <div class="modal-content-horizontal">
+          <div class="modal-header">
+            <h2><i class="bx bx-plus"></i> Add Subject</h2>
+            <span id="close-popup" class="close-btn">&times;</span>
+          </div>
+          <form class="add-subject-form" action="/2subjects" method="POST">
+            <div class="form-fields">
+              <div class="input-group">
+                <label for="isLab">Type</label>
+                <select id="isLab" name="isLab">
+                  <option value="" disabled selected>Laboratory or Non-Lab</option>
+                  <option value="Laboratory">Laboratory</option>
+                  <option value="Non-Laboratory">Non-Laboratory</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="subject-id">Subject ID</label>
+                <input type="text" id="subject-id" name="subjectId" placeholder="ID" required />
+              </div>
+              <div class="input-group">
+                <label for="subjectName">Subject Code</label>
+                <input type="text" id="subjectName" name="subjectName" placeholder="Subject Code" required />
+              </div>
+              <div class="input-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" placeholder="Description" required />
+              </div>
+              <div class="input-group">
+                <label for="unit">Unit</label>
+                <select id="unit" name="unit" required>
+                  <option value="" disabled selected>Unit</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time" required />
+              </div>
+              <div class="input-group">
+                <label for="day">Day</label>
+                <input type="text" id="day" name="day" placeholder="Day" required />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-add">Add</button>
+              <button type="button" id="cancel-btn" class="btn-cancel">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/subjects.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+/*user CSS*/
+.container {
+	padding: 30px;
+	background-color: #ffffff;
+	max-width: 1300px;
+	margin: 25px auto;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	margin-left: 11rem;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-bottom: 2px solid #e0e0e0;
+}
+
+.new-user-btn {
+	padding: 10px 20px;
+	background-color: #4CAF50; /* Blue color */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin-left: 20px; /* Added margin for spacing */
+}
+
+.new-user-btn:hover {
+	background-color: #2c6d2e; /* Lighter blue on hover */
+}
+
+/* Table Controls - Flexbox Alignment Fix */
+.table-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	padding: 10px 0;
+	border-bottom: 2px solid #e0e0e0;
+}
+
+/* Flexbox containers for the "Show" and "Search" sections */
+.show-entries,
+.search-box {
+	display: flex;
+	align-items: center;
+	gap: 10px; /* Adjusted spacing between label and input */
+	margin-bottom: 0; /* Reset margin */
+}
+
+.show-entries label,
+.search-box label {
+	font-weight: bold;
+	margin-right: 5px; /* Small margin between label and input */
+}
+
+.entries-select, 
+.search-input {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.entries-select {
+	width: 70px;
+}
+
+.search-input {
+	width: 250px;
+}
+
+/* Improved spacing between "Show entries" and "Search" */
+.table-controls .show-entries {
+	margin-right: auto; /* Align to the left */
+}
+
+.table-controls .search-box {
+	margin-left: 20px; /* Added spacing to push away from "Show" */
+}
+
+/* User Table */
+.user-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+.user-table th,
+.user-table td {
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	text-align: left;
+}
+
+.user-table th {
+	background-color: #f5f5f5;
+	font-weight: bold;
+}
+
+.user-table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.user-table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+.user-table tbody td {
+	text-align: center;
+}
+
+/* Action Buttons Styling */
+.edit-btn,
+.delete-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+.edit-btn i {
+	color: #4caf50; /* Green for edit */
+	transition: color 0.3s;
+}
+
+.delete-btn i {
+	color: #e71a1a; /* Red for delete */
+	transition: color 0.3s;
+}
+
+.edit-btn i:hover {
+	color: #2c6d2e; /* Darker green on hover */
+}
+
+.delete-btn i:hover {
+	color: #d32f2f; /* Darker red on hover */
+}
+
+/* Pagination */
+.pagination {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.pagination-btn {
+	background-color: #4CAF50; /* Blue for pagination */
+	color: white;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 0 5px;
+	transition: background-color 0.3s;
+}
+
+.pagination-btn:hover {
+	background-color: #2c6d2e; /* Lighter blue on hover */
+}
+
+.page-number {
+	width: 50px;
+	padding: 8px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+/* General Styling Fixes */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f9;
+	color: #333;
+}
+
+h2 {
+	margin: 0;
+	font-size: 24px;
+}
+
+label {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+input[type="text"],
+select {
+	font-size: 14px;
+}
+
+
+/* Additional Modal Styles */
+.modal {
+    display: none; /* Ensure the modal is hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative; /* Ensures the close button is positioned correctly */
+    z-index: 1001;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888; /* Light grey color */
+}
+
+.close:hover {
+    color: #000; /* Change color on hover for visibility */
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Full width on small screens */
+    }
+}
+
+
+/* Form Styling */
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px; /* Adjust padding for uniformity */
+    margin-bottom: 15px; /* Consistent spacing between fields */
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.save-btn, .cancel-btn {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Align the buttons in a row */
+form .button-group {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.button-group .save-btn, .button-group .cancel-btn {
+    flex-grow: 0;
+    margin-right: 10px;
+}
+
+  
+  
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+	.container {
+		width: 90%;
+	}
+
+	.table-controls {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.show-entries,
+	.search-box {
+		width: 100%;
+		justify-content: space-between;
+		margin-bottom: 10px; /* Adds space between the two in small screens */
+	}
+
+	.table-controls .search-box {
+		margin-left: 0; /* Remove extra margin on small screens */
+	}
+} /*Dri rataman sa CSS user*/

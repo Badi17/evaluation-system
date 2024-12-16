@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/instructors.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <%- include('partials/sidebar') %>
+      <!-- MAIN -->
+      <main>
+        <!-- Instructors List Section -->
+        <section class="Instructor-list-section">
+          <div class="table-container">
+            <div class="table-header">
+              <h2>Instructors List</h2>
+              <button class="btn-add-instructor" id="open-popup">
+                <i class="bx bx-plus"></i> Add Instructor
+              </button>
+            </div>
+
+            <div class="table-controls">
+              <label for="show-entries">Show
+                <select id="show-entries">
+                  <option value="1">1</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                </select>
+                Entries
+              </label>
+              <div class="search-box">
+                <input type="text" placeholder="Search" />
+                <i class="bx bx-search"></i>
+              </div>
+            </div>
+            <table class="instructor-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>InstructorID</th>
+                  <th>Name</th>
+                  <th>Subjects</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="instructor-table-body">
+                <% if (instructors && instructors.length > 0) { %>
+                  <% instructors.forEach((instructor, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td><%= instructor.instructorId %></td>
+                      <td><%= instructor.funame %></td>
+                      <td>
+                        <pre><%= instructor.subjects ? instructor.subjects.replace(/,/g, '\n').trim() : '' %></pre>
+                      </td>
+                      <td>
+                        <i class="bx bx-show"></i>
+                        <i class="bx bx-edit"></i>
+                        <i class="bx bx-trash"></i>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6">No instructors found.</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+                      
+            <div class="table-footer">
+              <div class="pagination">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Add Instructor Modal (Hidden by default) -->
+        <div class="modal-bg" id="add-instructor-modal">
+          <div class="modal-content-horizontal">
+            <div class="modal-header">
+              <h2><i class="bx bx-plus"></i> Add Instructor</h2>
+              <span id="close-popup" class="close-btn">&times;</span>
+            </div>
+            <form class="add-instructor-form" action="/instructors" method="POST">
+              <!-- Form Fields -->
+              <div class="form-fields">
+                <div class="input-group">
+                
+
+                <div class="input-group">
+                  <label for="instructor-id">Instructor ID</label>
+                  <input type="text" id="instructor-id" name="instructorId" placeholder="ID" />
+                </div>
+
+                <div class="input-group">
+                  <label for="instructor-name">Instructor Name</label>
+                  <input type="text" id="instructor-name" name="funame" placeholder="Name" />
+                </div>
+
+                <div class="input-group">
+                  <label for="password">Instructor password</label>
+                  <input type="text" id="instructor-password" name="password" placeholder="Password" />
+                </div>
+              </div> 
+
+              <div class="input-group">
+                <label for="description">Instructor Subjects</label>
+                <textarea type="text" id="Subjects" name="subjects" placeholder="Subjects"></textarea>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="form-actions">
+                <button type="submit" class="btn-add">Add</button>
+                <button type="button" id="cancel-btn" class="btn-cancel">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <!-- MAIN -->
+    </section>
+    <!-- NAVBAR -->
+
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/instructors.js"></script>
+  </body>
+</html>

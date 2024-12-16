@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Report</title>
+    <link rel="stylesheet" href="/css/report.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </head>
+        <body>
+            <%- include('partials/sidebar') %>
+
+            <div class="container">
+        <section class="stats">
+            <p><strong>Most Evaluated Subject:</strong> <%= mostEvaluatedSubject || 'N/A' %></p>
+            <p><strong>Least Evaluated Subject:</strong> <%= leastEvaluatedSubject || 'N/A' %></p>
+            <p><strong>Highest Remark:</strong> <%= highestRemark || 'N/A' %></p>
+            <p><strong>Lowest Remark:</strong> <%= lowestRemark || 'N/A' %></p>
+        </section>    
+
+        <!-- Combined Chart Section -->
+        <section id="chart-section">
+            <canvas id="combinedChart"></canvas>
+        </section>
+
+        <!-- Evaluation Report Table Section -->
+        <section id="evaluation-report" class="report active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Subject</th>
+                        <th>Instructor</th>
+                        <th>Evaluated By</th>
+                        <th>Remarks</th>
+                        <th>Evaluation Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (evaluations.length > 0) { %>
+                        <% evaluations.forEach((evaluation, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= evaluation.subject %></td>
+                                <td><%= evaluation.instructor %></td>
+                                <td><%= evaluation.student %></td>
+                                <td><%= evaluation.remarks %></td>
+                                <td><%= evaluation.date %></td>
+                                <td><a href="/statistics/<%= evaluation.id %>">View</a></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="7">No evaluations found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        // Rating Counts for 1-5
+        const ratingCounts = <%- JSON.stringify(ratingCounts || {}) %>;
+
+        // Subject Evaluation Counts
+        const subjectCounts = <%- JSON.stringify(subjectCounts || {}) %>;
+
+        // Highest and Lowest Remarks
+        const highestRemark = <%- highestRemark || 0 %>;
+        const lowestRemark = <%- lowestRemark || 0 %>;
+
+        // Data for Combined Chart
+        const combinedChartData = {
+            labels: ['1', '2', '3', '4', '5', ...Object.keys(subjectCounts)], // Ratings 1-5 + Subject Names
+            datasets: [
+                {
+                    label: 'Rating Distribution',
+                    data: [
+                        ratingCounts[1] || 0,
+                        ratingCounts[2] || 0,
+                        ratingCounts[3] || 0,
+                        ratingCounts[4] || 0,
+                        ratingCounts[5] || 0,
+                        0, 0, 0, 0, 0 // Dummy data for subject counts (unused for ratings)
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(75, 192, 192, 0.2)', // Same color for subject counts
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(75, 192, 192, 1)', // Same color for subject counts
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Subject Evaluation Counts',
+                    data: [...Array(5).fill(0), ...Object.values(subjectCounts)], // Dummy data for ratings 1-5
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Remarks (Highest & Lowest)',
+                    data: [highestRemark, lowestRemark], // Only two points: one for highest and one for lowest remark
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'], // Different colors for highest and lowest
+                    borderWidth: 2,
+                    type: 'bar', // Bar chart for both highest and lowest remarks
+                    fill: false,  // No fill
+                }
+            ]
+        };
+
+        // Dynamically set the chart height based on window size
+        const adjustChartHeight = () => {
+            const chartHeight = window.innerWidth <= 768 ? 300 : 350; // 350px for larger screens
+            document.getElementById('combinedChart').style.height = chartHeight + 'px';
+        };
+
+        window.addEventListener('resize', adjustChartHeight);
+        adjustChartHeight(); // Adjust on page load
+
+        const ctx = document.getElementById('combinedChart').getContext('2d');
+        const combinedChart = new Chart(ctx, {
+            type: 'bar',
+            data: combinedChartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Evaluation Report (Ratings Distribution & Subject Evaluation Counts)'
+                    },
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (tooltipItem) => {
+                                // Modify the label based on dataset
+                                if (tooltipItem.datasetIndex === 0) {
+                                    return `${tooltipItem.raw} evaluations (Rating Distribution)`;
+                                }
+                                if (tooltipItem.datasetIndex === 1) {
+                                    return `${tooltipItem.raw} evaluations (Subject Evaluation Counts)`;
+                                }
+                                if (tooltipItem.datasetIndex === 2) {
+                                    // Highest Remark will always be at index 0, Lowest Remark at index 1
+                                    return tooltipItem.index === 0
+                                        ? `Highest Remark: ${highestRemark}`
+                                        : `Lowest Remark: ${lowestRemark}`;
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

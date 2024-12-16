@@ -1,0 +1,387 @@
+/* General layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Layout wrapper for side-by-side tables */
+.tables-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.small-table {
+  width: 300px;
+}
+
+.small-table {
+  flex: 0 0 350px; /* Adjust width as needed */
+  
+}
+
+/* Ensure the tables look cohesive */
+.table-container {
+  max-width: none;
+  width: 100%;
+}
+
+.small-table {
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: -11rem;
+  margin-left: -9rem;
+}
+
+  /* Container for the table and header */
+  .table-container {
+    margin: 20px auto;
+    max-width: 750px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header section with title and Add Bundle button */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  .add-bundle-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .add-bundle-btn i {
+    margin-right: 8px;
+  }
+  
+  .add-bundle-btn:hover {
+    background-color: #2f7831;
+  }
+  
+  /* Table controls for entries and search */
+  .table-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    align-items: center;
+  }
+  
+  #show-entries {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .search-box input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* Styling the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  table thead {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  table th,
+  table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Table actions with icons */
+  .bx {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 5px;
+  }
+  
+  .bx:hover {
+    color: #4a90e2;
+  }
+  
+  /* Pagination and table info */
+  .table-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .pagination-btn {
+    padding: 8px 12px;
+    border: 1px solid #4CAF50;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .pagination-btn.active,
+  .pagination-btn:hover {
+    background-color: #3a883c;
+    color: white;
+  }
+  
+
+ /*Bundle modal pop up*/
+ /* Modal Background */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Hide Modal by Default */
+  .hidden {
+    display: none;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+  }
+  
+  /* Form Elements */
+  .modal-content h3 {
+    margin-top: 0;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .modal-content input,
+  .modal-content select,
+  .modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .add-btn, .cancel-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .add-btn {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 6px;
+  }
+  
+  .cancel-btn {
+    background-color: #f44336;
+    color: white;
+    margin-right: 14rem;
+  }
+  
+  /* Close Button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+
+  /*Multi select for checkbox*/
+  .multi-select {
+  position: relative;
+  width: 100%;
+}
+
+.select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.select-box span {
+  pointer-events: none;
+}
+
+.checkbox-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 999;
+  display: none;
+}
+
+.checkbox-dropdown label {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.checkbox-dropdown label input {
+  margin-right: 10px;
+}
+
+.multi-select.active .checkbox-dropdown {
+  display: block;
+}
+
+.modal#statusSuccessModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusSuccessModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusSuccessModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusSuccessModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusSuccessModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusSuccessModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100%{
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash-check { 
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+@keyframes dash-check {
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+.box00{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}

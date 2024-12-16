@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Questionnaire</title>
+  <link rel="stylesheet" href="/css/questionnaire.css">
+</head>
+<body>
+  <%- include('partials/sidebar') %>
+  <div class="sidebar"></div>
+
+  <div class="container">
+    <br><br><br>
+    <div class="form-container">
+      <div class="question-form">
+        <h3>Question Form</h3>
+        <select id="criteriaSelect" class="form-element">
+          <option value="" disabled selected>Please select here</option>
+          <option value="1">Criteria 1</option>
+          <option value="2">Criteria 2</option>
+          <option value="3">Criteria 3</option>
+        </select>
+
+        <textarea id="questionInput" class="form-element" placeholder="Question"></textarea>
+        <button id="saveButton" class="add-btn">Save</button>
+        <button id="cancelButton" class="cancel-btn">Cancel</button>
+      </div>
+
+      <div class="questionnaire-table">
+        <h3>Evaluation Questionnaire</h3>
+        <div class="legend">
+          <p>Rating Legend</p>
+          <p>5 = Strongly Agree, 4 = Agree, 3 = Uncertain, 2 = Disagree, 1 = Strongly Disagree</p>
+        </div>
+
+        <div class="criteria-section" data-criteria-id="1">
+          <h4>Criteria 1</h4>
+          <% questions.filter(q => q.criteria == 1).forEach(question => { %>
+            <div class="question-row" data-question-id="<%= question.id %>" data-criteria-id="<%= question.criteria %>">
+              <div class="action-icons">
+                <span class="icon edit-icon" title="Edit">&#x270E;</span>
+                <span class="icon delete-icon" title="Delete">&#x1F5D1;</span>
+              </div>
+              <p><%= question.question %></p>
+              <div class="rating-options">
+                <% [5, 4, 3, 2, 1].forEach(score => { %>
+                  <label>
+                    <input type="radio" name="question_<%= question.id %>" value="<%= score %>">
+                    <%= score %>
+                  </label>
+                <% }) %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <div class="criteria-section" data-criteria-id="2">
+          <h4>Criteria 2</h4>
+          <% questions.filter(q => q.criteria == 2).forEach(question => { %>
+            <div class="question-row" data-question-id="<%= question.id %>" data-criteria-id="<%= question.criteria %>">
+              <div class="action-icons">
+                <span class="icon edit-icon" title="Edit">&#x270E;</span>
+                <span class="icon delete-icon" title="Delete">&#x1F5D1;</span>
+              </div>
+              <p><%= question.question %></p>
+              <div class="rating-options">
+                <% [5, 4, 3, 2, 1].forEach(score => { %>
+                  <label>
+                    <input type="radio" name="question_<%= question.id %>" value="<%= score %>">
+                    <%= score %>
+                  </label>
+                <% }) %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <div class="criteria-section" data-criteria-id="3">
+          <h4>Criteria 3</h4>
+          <% questions.filter(q => q.criteria == 3).forEach(question => { %>
+            <div class="question-row" data-question-id="<%= question.id %>" data-criteria-id="<%= question.criteria %>">
+              <div class="action-icons">
+                <span class="icon edit-icon" title="Edit">&#x270E;</span>
+                <span class="icon delete-icon" title="Delete">&#x1F5D1;</span>
+              </div>
+              <p><%= question.question %></p>
+              <div class="rating-options">
+                <% [5, 4, 3, 2, 1].forEach(score => { %>
+                  <label>
+                    <input type="radio" name="question_<%= question.id %>" value="<%= score %>">
+                    <%= score %>
+                  </label>
+                <% }) %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <button class="btn save-order">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/questionnaire.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

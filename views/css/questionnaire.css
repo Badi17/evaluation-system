@@ -1,0 +1,202 @@
+/* General layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Flex Container for Question Form and Questionnaire Table */
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-left: 10rem;
+  }
+  
+  /* Question Form */
+  .question-form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+  }
+  
+  .question-form h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .form-element {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-element:focus {
+    border-color: #4CAF50;
+  }
+  
+  /* Buttons */
+  .add-btn, .cancel-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(to right, #4CAF50, #3a883c);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+  }
+
+  .save-order {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #4CAF50, #3a883c);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .cancel-btn {
+    background: #f44336;
+  }
+  
+  .add-btn:hover, .save-order:hover {
+    background: #3a883c;
+  }
+  
+  .cancel-btn:hover {
+    background: #d32f2f;
+  }
+  
+  /* Questionnaire Table */
+  .questionnaire-table {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 70%;
+    margin-right: 2rem;
+    margin-right: -4.5rem;
+  }
+  
+  .legend p {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .criteria-section {
+    margin-bottom: 20px;
+  }
+  
+  .criteria-section h4 {
+    font-weight: 650;
+    font-size: 1em;
+    background: linear-gradient(to right, #4CAF50, #76d275);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  .question-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .rating-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .rating-options label {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .rating-options input[type="radio"] {
+    accent-color: #4CAF50;
+  }
+  
+  /* Feedback Section */
+  .feedback-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feedback-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-section textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    resize: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .feedback-section textarea:focus {
+    border-color: #4CAF50;
+  }
+  
+  /* Icons */
+  .icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  
+  .icon:hover {
+    color: #333;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .form-container {
+      flex-direction: column;
+    }
+  
+    .questionnaire-table, .question-form {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  
